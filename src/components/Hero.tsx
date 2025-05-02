@@ -20,7 +20,7 @@ function Hero() {
               }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
             >
-              Hola, soy<span className="text-blue-600 dark:text-blue-400"> Steven Erazo</span>
+              Hola, soy<span className="text-blue-600 dark:text-blue-400"> Steven</span>
             </motion.h1>
 
             <motion.h2
@@ -28,7 +28,7 @@ function Hero() {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } }
               }}
-              className="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300"
+              className="mt-4 text-xl md:text-xl text-gray-600 dark:text-gray-300"
             >
               Analista de TI || Cibsersegridad || Desarrollador FullStack
             </motion.h2>
@@ -38,7 +38,7 @@ function Hero() {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.4 } }
               }}
-              className="mt-6 text-gray-700 dark:text-gray-400 text-lg leading-relaxed max-w-2xl"
+              className="mt-6 text-gray-700 dark:text-gray-400 text-lg leading-relaxed max-w-3x1"
             >
               Estudiante de octavo semestre de Ingeniería en Ciencias de la Computación con experiencia como desarrollador Full Stack y
               enfoque creciente en ciberseguridad. He trabajado en automatización de flujos con Python, desarrollo web con React, Node.js
@@ -112,7 +112,7 @@ function Hero() {
             }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-600 dark:border-blue-400 shadow-xl">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-600 dark:border-blue-400 shadow-xl ml-20">
               <img
                 src={image}
                 alt="Profile"
