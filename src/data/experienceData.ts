@@ -9,8 +9,8 @@ export const experienceData = [
   {
     title: "Researcher",
     company: "SmartLab - Escuela Poltecnica Nacional",
-    period: "2025 - Present",
-    description: "Proyecto - Fine Tuning con DeepSeek LLM",
+    period: "2025 - Actualidad",
+    description: "",
     technologies: ["Ciberseguridad", "IA", "LLMs", "Python", "Machine Learning"]
   }
 ];

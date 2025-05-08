@@ -5,57 +5,71 @@ export const skillsData = [
   {
     category: "Frontend Development",
     skills: [
-      { name: "HTML5", level: 95, icon: <Code className="w-10 h-10" /> },
-      { name: "CSS3", level: 90, icon: <PaintBucket className="w-10 h-10" /> },
-      { name: "JavaScript", level: 92, icon: <Code className="w-10 h-10" /> },
-      { name: "TypeScript", level: 85, icon: <Code className="w-10 h-10" /> },
-      { name: "React", level: 90 },
-      { name: "Vue.js", level: 75 },
-      { name: "Angular", level: 70 },
-      { name: "Redux", level: 85 },
-      { name: "Tailwind CSS", level: 88 },
-      { name: "SASS/SCSS", level: 85 }
+      { name: "HTML5", level: 100, icon: <Code className="w-5 h-10" /> },
+      { name: "CSS3", level: 100, icon: <PaintBucket className="w-10 h-10" /> },
+      { name: "JavaScript", level: 100, icon: <Code className="w-10 h-10" /> },
+      { name: "TypeScript", level: 100, icon: <Code className="w-10 h-10" /> },
+      { name: "React", level: 100 },
+      { name: "PHP", level: 100 },
+      { name: "Tailwind CSS", level: 100 }
     ]
   },
   {
     category: "Backend Development",
     skills: [
-      { name: "Node.js", level: 80, icon: <Server className="w-10 h-10" /> },
-      { name: "Express", level: 75 },
-      { name: "Python", level: 65 },
-      { name: "Django", level: 60 },
-      { name: "GraphQL", level: 70 },
-      { name: "REST API", level: 85 }
+      { name: "Node.js", level: 50, icon: <Server className="w-10 h-10" /> },
+      { name: "Express", level: 50 },
+      { name: "Python", level: 50 },
+      { name: "Django", level: 50 },
+      { name: "GraphQL", level: 50 },
+      { name: "REST API", level: 50 }
     ]
   },
   {
-    category: "Database",
+    category: "Bases de datos",
     skills: [
-      { name: "MongoDB", level: 75, icon: <Database className="w-10 h-10" /> },
-      { name: "MySQL", level: 70 },
-      { name: "PostgreSQL", level: 65 },
-      { name: "Firebase", level: 80 }
+      { name: "MongoDB", level: 10, icon: <Database className="w-10 h-10" /> },
+      { name: "MySQL", level: 10 },
+      { name: "PostgreSQL", level: 10 },
+      { name: "Firebase", level: 10 }
     ]
   },
   {
-    category: "Tools & Others",
+    category: "Control de versiones y herramientas",
     skills: [
-      { name: "Git", level: 90, icon: <Settings className="w-10 h-10" /> },
-      { name: "Webpack", level: 75 },
-      { name: "Docker", level: 65 },
-      { name: "AWS", level: 60 },
-      { name: "Figma", level: 80 },
-      { name: "Jest", level: 75 },
-      { name: "CI/CD", level: 70 }
+      { name: "Git", level: 100, icon: <Settings className="w-10 h-10" /> },
+      { name: "Git Hub", level: 100 },
+      { name: "Azure Devops", level: 100 },
+      { name: "Jira", level: 100 }
     ]
   },
   {
-    category: "Learning",
+    category: "IA",
     skills: [
-      { name: "Web3", level: 40, icon: <GraduationCap className="w-10 h-10" /> },
-      { name: "Machine Learning", level: 30 },
-      { name: "WebAssembly", level: 35 },
-      { name: "Rust", level: 25 }
+      { name: "TensorFlow", level: 50, icon: <GraduationCap className="w-10 h-10" /> },
+      { name: "PyTorch ", level: 50 },
+      { name: "Redes neuronales", level: 50 },
+      { name: "Scikit-learn", level: 50 }
+    ]
+  },
+  {
+    category: "Analisis de datos",
+    skills: [
+      { name: "Power BI", level: 10, icon: <GraduationCap className="w-10 h-10" /> },
+      { name: "Pandas", level: 10 },
+      { name: "Matplotlib ", level: 10 },
+      { name: "NumPy ", level: 10 },
+      { name: "Excel", level: 10 },
+      { name: "Big Query", level: 10 },
+      { name: "Google Cloude", level: 10 }
+    ]
+  },
+  {
+    category: "Ciberseguridad",
+    skills: [
+      { name: "Kali Linux", level: 10, icon: <GraduationCap className="w-10 h-10" /> },
+      { name: "Arquitectura de red", level: 10 },
+      { name: "Configuracion Firewalls ", level: 10 }
     ]
   }
 ];
