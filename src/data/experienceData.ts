@@ -1,16 +1,75 @@
 export const experienceData = [
   {
-    title: "Asistente de TI",
-    company: "Corporacion HUNEV S.A",
-    period: "Julio, 2024 - Marzo, 2025",
-    description: "Desarrollo de una aplicación web para la gestión de firmas digitales del personal médico utilizando React, Node.js, Express y MySQL, integrando react-signature-canvas para la captura segura de firmas y aplicando principios de usabilidad. Administré servidores Linux, incluyendo servicios de correo con Postfix y máquinas virtuales mediante KVM. Colaboré en auditorías médicas automatizando flujos de trabajo con Python, integré sistemas web con software de escritorio mediante consumo de APIs, y gestioné firewalls configurando políticas de red, supervisando la infraestructura y resolviendo problemas de conectividad. También migré bases de datos de MongoDB a MySQL, depurando y estructurando los datos, mantuve páginas web en PHP implementando nuevas funcionalidades y brindé soporte técnico tanto remoto como presencial a usuarios finales.",
-    technologies: ["React", "TypeScript", "Postman", "Git/Git Hub", "Tailwind CSS" , "PHP", "MySQL", "Ciberseguridad", "MongoDB","Linux"]
+    title: "Junior Software Developer",
+    company: "CONSTRUIBLEC LTDA",
+    period: "Feb 2026 - Actualidad",
+    description:
+      "Diseño e implementación de integraciones REST API entre sistemas empresariales (OpenMAINT/CMDBuild y Hostaway) para automatización de workflows de gestión de propiedades. Desarrollo full-stack de aplicaciones web con React/Vite en frontend y Java/Tomcat en backend. Despliegue y administración de infraestructura containerizada con Docker en VPS Linux, incluyendo configuración de seguridad multicapa (UFW, iptables). Optimización de rendimiento mediante testing de carga con k6 y tuning de aplicaciones Java.",
+    technologies: [
+      "React",
+      "Vite",
+      "Java",
+      "Tomcat",
+      "PostgreSQL",
+      "Docker",
+      "Linux",
+      "k6",
+      "Zod",
+    ],
+    current: true,
   },
   {
-    title: "Researcher",
-    company: "SmartLab - Escuela Poltecnica Nacional",
-    period: "Marzo, 2025 - Actualidad",
-    description: "",
-    technologies: ["Ciberseguridad", "IA", "LLMs", "Python", "Machine Learning"]
-  }
+    title: "Full Stack Developer",
+    company: "MARKUP",
+    period: "Oct 2025 - Actualidad",
+    description:
+      "Diseño e implementación de plataforma financiera completa con arquitectura de microservicios, desarrollando backend en Spring Boot (Java 17) con autenticación JWT/Spring Security basada en roles, APIs REST documentadas con Swagger y frontend React/TypeScript con gestión de estado mediante Context API. Desarrollo de módulos críticos del dominio financiero incluyendo solicitudes de crédito, aprobación de préstamos, seguimiento de pagos y gestión de inversiones. Implementación de experiencia de usuario completa con dashboards diferenciados por rol y librería de componentes reutilizables con TailwindCSS.",
+    technologies: [
+      "Spring Boot",
+      "Java 17",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "JWT",
+      "Swagger",
+      "TailwindCSS",
+    ],
+    current: true,
+  },
+  {
+    title: "Pasante de Desarrollo / Analista de Incidentes N1",
+    company: "NTT DATA",
+    period: "Jun 2025 - Dic 2025",
+    description:
+      "Análisis y resolución de incidentes críticos en sistemas bancarios productivos, ejecutando diagnósticos técnicos de arquitecturas de microservicios Spring Boot. Desarrollo de queries SQL complejas para trazabilidad de transacciones bancarias y análisis de causa raíz. Debugging y análisis de logs distribuidos utilizando Dynatrace para monitoreo de performance, OpenLens para inspección de pods en Kubernetes. Gestión operativa de ambientes productivos containerizados.",
+    technologies: [
+      "Spring Boot",
+      "SQL",
+      "Kubernetes",
+      "Dynatrace",
+      "OpenLens",
+      "Stratio",
+      "Microservicios",
+    ],
+    current: false,
+  },
+  {
+    title: "Asistente de TI",
+    company: "Corporación HUNEV",
+    period: "Jul 2024 - Mar 2025",
+    description:
+      "Desarrollo full-stack de aplicación web para digitalización de procesos de firma y cumplimiento normativo desplegada en todas las sucursales, utilizando Angular en frontend, Node.js/Express en backend y MySQL para gestión de registros. Administración de infraestructura de servidores Windows Server y Linux, incluyendo configuración y mantenimiento de servicios críticos (DNS, DHCP, servidores web, bases de datos). Implementación y hardening de seguridad perimetral con firewalls Fortinet, configurando VPNs site-to-site y segmentación de red mediante VLANs.",
+    technologies: [
+      "Angular",
+      "Node.js",
+      "Express",
+      "MySQL",
+      "Linux",
+      "Windows Server",
+      "Fortinet",
+      "VPN/VLAN",
+    ],
+    current: false,
+  },
 ];

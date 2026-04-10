@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, X } from 'lucide-react';
+import { ExternalLink, Github, X, Code2, Sparkles } from 'lucide-react';
 import { Project } from '../types';
 import { motion } from '../utils/motion';
 
@@ -13,125 +13,154 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <>
       <div 
-        className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
+        className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:scale-[1.02]"
         onClick={() => setShowModal(true)}
       >
-        <div className="relative h-48 overflow-hidden">
+        {/* Image Container */}
+        <div className="relative h-56 overflow-hidden">
           <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-            <div className="p-4 w-full">
-              <div className="flex justify-between items-center">
-                <h3 className="text-white font-medium truncate">{project.title}</h3>
-                <div className="flex space-x-2">
-                  {project.liveUrl && (
-                    <a 
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-blue-400 transition-colors p-1"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a 
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-blue-400 transition-colors p-1"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label="GitHub Repository"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                  )}
-                </div>
-              </div>
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          
+          {/* Hover Actions */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="flex gap-3">
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/90 dark:bg-gray-900/90 rounded-full text-blue-600 hover:bg-white hover:scale-110 transition-all shadow-lg"
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label="Live Demo"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a 
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/90 dark:bg-gray-900/90 rounded-full text-gray-900 dark:text-white hover:bg-white hover:scale-110 transition-all shadow-lg"
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label="GitHub Repository"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+              )}
             </div>
           </div>
+
+          {/* Category Badge */}
+          <div className="absolute top-4 right-4">
+            <span className="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full shadow-lg">
+              {project.categories[0]?.toUpperCase()}
+            </span>
+          </div>
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{project.title}</h3>
-          <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm line-clamp-2">{project.shortDescription}</p>
+
+        {/* Content */}
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {project.title}
+          </h3>
+          <p className="mt-3 text-gray-600 dark:text-gray-400 text-sm line-clamp-2 leading-relaxed">
+            {project.shortDescription}
+          </p>
           
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             {project.technologies.slice(0, 3).map((tech, index) => (
               <span 
                 key={index} 
-                className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs font-medium rounded-full"
+                className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full"
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full">
-                +{project.technologies.length - 3} more
+              <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full flex items-center gap-1">
+                <Sparkles className="w-3 h-3" />
+                +{project.technologies.length - 3}
               </span>
             )}
           </div>
         </div>
+
+        {/* Decorative corner */}
+        <div className="absolute top-0 left-0 w-20 h-20 bg-blue-500/5 rounded-br-full blur-xl"></div>
       </div>
       
       {/* Project Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
             <div 
-              className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
               aria-hidden="true"
               onClick={() => setShowModal(false)}
             ></div>
             
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
             <motion.div 
-              className="inline-block align-bottom bg-white dark:bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              className="relative inline-block align-middle bg-white dark:bg-gray-900 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-3xl sm:w-full border border-gray-200 dark:border-gray-800"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute top-0 right-0 pt-4 pr-4">
-                <button
-                  type="button"
-                  className="bg-white dark:bg-gray-800 rounded-full p-1 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none"
-                  onClick={() => setShowModal(false)}
-                >
-                  <span className="sr-only">Close</span>
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
+              {/* Close Button */}
+              <button
+                type="button"
+                className="absolute top-4 right-4 z-10 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-all hover:scale-110 shadow-lg"
+                onClick={() => setShowModal(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
               
-              <div className="relative h-56 sm:h-64">
+              {/* Modal Image */}
+              <div className="relative h-64 sm:h-80 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
               
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white" id="modal-title">
-                  {project.title}
-                </h3>
+              {/* Modal Content */}
+              <div className="p-8">
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div>
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white" id="modal-title">
+                      {project.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 dark:text-gray-400">
+                      {project.shortDescription}
+                    </p>
+                  </div>
+                </div>
                 
-                <p className="mt-4 text-gray-700 dark:text-gray-300">
-                  {project.description}
-                </p>
+                <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
                 
-                <div className="mt-6">
-                  <h4 className="text-lg font-medium text-gray-900 dark:text-white">Technologies</h4>
-                  <div className="mt-2 flex flex-wrap gap-2">
+                <div className="mt-8">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Code2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Tecnologías utilizadas</h4>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
                       <span 
                         key={index}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium rounded-full"
+                        className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold rounded-lg"
                       >
                         {tech}
                       </span>
@@ -139,16 +168,16 @@ function ProjectCard({ project }: ProjectCardProps) {
                   </div>
                 </div>
                 
-                <div className="mt-6 flex space-x-4">
+                <div className="mt-8 flex flex-wrap gap-4">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      Ver proyecto en vivo
                     </a>
                   )}
                   
@@ -157,10 +186,10 @@ function ProjectCard({ project }: ProjectCardProps) {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-sm font-medium rounded-md shadow-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 text-gray-900 dark:text-white font-semibold rounded-lg transition-all hover:scale-105"
                     >
-                      <Github className="w-4 h-4 mr-2" />
-                      View Code
+                      <Github className="w-5 h-5 mr-2" />
+                      Ver código
                     </a>
                   )}
                 </div>
