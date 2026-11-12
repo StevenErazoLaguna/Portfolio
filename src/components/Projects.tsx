@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FolderKanban, Filter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { projectsData } from '../data/projectsData';
 import ProjectCard from './ProjectCard';
 import { motion } from '../utils/motion';
@@ -7,6 +8,7 @@ import SectionTitle from './SectionTitle';
 
 function Projects() {
   const [filter, setFilter] = useState<string>('all');
+  const { t } = useTranslation();
 
   // Get unique categories
   const categories = ['all', ...new Set(projectsData.flatMap(project => project.categories))];
@@ -26,8 +28,8 @@ function Projects() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          title="Proyectos Destacados"
-          subtitle="Soluciones innovadoras y aplicaciones que he desarrollado"
+          title={t('projects.title')}
+          subtitle={t('projects.subtitle')}
           icon={<FolderKanban className="w-6 h-6" />}
         />
 
@@ -41,7 +43,7 @@ function Projects() {
         >
           <div className="flex items-center justify-center gap-3 mb-8">
             <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Filtrar por:</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">{t('projects.filterBy')}</span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
@@ -55,7 +57,7 @@ function Projects() {
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
                 }`}
               >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
+                {t(`projects.filters.${category.toLowerCase()}`, { defaultValue: category })}
               </button>
             ))}
           </div>
@@ -83,7 +85,7 @@ function Projects() {
             className="mt-16 text-center"
           >
             <p className="text-gray-500 dark:text-gray-400 text-lg">
-              No hay proyectos en esta categoría
+              {t('projects.noProjects')}
             </p>
           </motion.div>
         )}

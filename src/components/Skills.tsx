@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Code } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { skillsData } from '../data/skillsData';
 import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle';
@@ -18,19 +19,21 @@ const colorMap: { [key: string]: { bg: string; text: string; border: string; hov
 
 function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const { t } = useTranslation();
+  const categoryKeys = ['frontend', 'backend', 'databases', 'devops', 'tools', 'ai', 'data', 'security'];
 
   const getLevelLabel = (level: number): string => {
-    if (level >= 85) return 'Avanzado';
-    if (level >= 70) return 'Intermedio';
-    return 'Básico';
+    if (level >= 85) return t('skills.level.advanced');
+    if (level >= 70) return t('skills.level.intermediate');
+    return t('skills.level.basic');
   };
 
   return (
     <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          title="Skills & Technologies"
-          subtitle="Tecnologías y herramientas con las que trabajo"
+          title={t('skills.title')}
+          subtitle={t('skills.subtitle')}
           icon={<Code className="w-6 h-6" />}
         />
 
@@ -49,7 +52,7 @@ function Skills() {
               >
                 <h3 className={`text-xl font-bold ${colors.text} mb-6 flex items-center gap-2`}>
                   <div className={`w-3 h-3 rounded-full ${colors.text.replace('text-', 'bg-')}`}></div>
-                  {category.category}
+                  {t(`skills.categories.${categoryKeys[categoryIndex]}`, { defaultValue: category.category })}
                 </h3>
 
                 <div className="grid grid-cols-2 gap-3">

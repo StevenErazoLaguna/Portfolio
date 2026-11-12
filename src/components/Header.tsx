@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,11 +24,11 @@ function Header() {
   };
 
   const navLinks = [
-    { name: 'Inicio', href: '#about' },
-    { name: 'Experiencia', href: '#experience' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Contacto', href: '#contact' },
+    { name: t('nav.home'), href: '#about' },
+    { name: t('nav.experience'), href: '#experience' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
 
   return (
@@ -62,10 +65,11 @@ function Header() {
                 {link.name}
               </a>
             ))}
+            <LanguageSwitcher />
             <button
               onClick={toggleTheme}
               className="ml-2 p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110"
-              aria-label="Toggle theme"
+              aria-label={t('theme.toggle', { defaultValue: 'Toggle theme' })}
             >
               {theme === 'dark' ? (
                 <Sun className="w-5 h-5 text-yellow-500" />
@@ -77,10 +81,11 @@ function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden gap-2">
+            <LanguageSwitcher />
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
-              aria-label="Toggle theme"
+              aria-label={t('theme.toggle', { defaultValue: 'Toggle theme' })}
             >
               {theme === 'dark' ? (
                 <Sun className="w-5 h-5 text-yellow-500" />
@@ -91,7 +96,7 @@ function Header() {
             <button
               onClick={toggleMenu}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
-              aria-label="Toggle menu"
+              aria-label={t('menu.toggle', { defaultValue: 'Toggle menu' })}
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />

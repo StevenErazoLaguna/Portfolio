@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ExternalLink, Github, X, Code2, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Project } from '../types';
 import { motion } from '../utils/motion';
 
@@ -9,6 +10,11 @@ interface ProjectCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
+  const projectKey = `projects.items.${project.id}`;
+  const shortDescription = t(`${projectKey}.shortDescription`, { defaultValue: project.shortDescription });
+  const description = t(`${projectKey}.description`, { defaultValue: project.description });
+  const category = t(`projects.filters.${project.categories[0]?.toLowerCase()}`, { defaultValue: project.categories[0] });
   
   return (
     <>
@@ -37,7 +43,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   className="p-3 bg-white/90 dark:bg-gray-900/90 rounded-full text-blue-600 hover:bg-white hover:scale-110 transition-all shadow-lg"
                   onClick={(e) => e.stopPropagation()}
-                  aria-label="Live Demo"
+                  aria-label={t('projects.liveDemo')}
                 >
                   <ExternalLink className="w-5 h-5" />
                 </a>
@@ -49,7 +55,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   className="p-3 bg-white/90 dark:bg-gray-900/90 rounded-full text-gray-900 dark:text-white hover:bg-white hover:scale-110 transition-all shadow-lg"
                   onClick={(e) => e.stopPropagation()}
-                  aria-label="GitHub Repository"
+                  aria-label={t('projects.repository')}
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -60,7 +66,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           {/* Category Badge */}
           <div className="absolute top-4 right-4">
             <span className="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full shadow-lg">
-              {project.categories[0]?.toUpperCase()}
+              {category}
             </span>
           </div>
         </div>
@@ -71,7 +77,7 @@ function ProjectCard({ project }: ProjectCardProps) {
             {project.title}
           </h3>
           <p className="mt-3 text-gray-600 dark:text-gray-400 text-sm line-clamp-2 leading-relaxed">
-            {project.shortDescription}
+            {shortDescription}
           </p>
           
           <div className="mt-5 flex flex-wrap gap-2">
@@ -116,6 +122,7 @@ function ProjectCard({ project }: ProjectCardProps) {
               {/* Close Button */}
               <button
                 type="button"
+                aria-label={t('projects.close')}
                 className="absolute top-4 right-4 z-10 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-all hover:scale-110 shadow-lg"
                 onClick={() => setShowModal(false)}
               >
@@ -140,21 +147,21 @@ function ProjectCard({ project }: ProjectCardProps) {
                       {project.title}
                     </h3>
                     <p className="mt-2 text-gray-600 dark:text-gray-400">
-                      {project.shortDescription}
+                      {shortDescription}
                     </p>
                   </div>
                 </div>
                 
                 <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {project.description}
+                    {description}
                   </p>
                 </div>
                 
                 <div className="mt-8">
                   <div className="flex items-center gap-2 mb-4">
                     <Code2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Tecnologías utilizadas</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t('projects.technologiesUsed')}</h4>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
@@ -177,7 +184,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                       className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
                     >
                       <ExternalLink className="w-5 h-5 mr-2" />
-                      Ver proyecto en vivo
+                      {t('projects.viewLive')}
                     </a>
                   )}
                   
@@ -189,7 +196,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                       className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 text-gray-900 dark:text-white font-semibold rounded-lg transition-all hover:scale-105"
                     >
                       <Github className="w-5 h-5 mr-2" />
-                      Ver código
+                      {t('projects.viewCode')}
                     </a>
                   )}
                 </div>

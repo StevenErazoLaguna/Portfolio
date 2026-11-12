@@ -1,8 +1,9 @@
-import React from 'react';
 import { Github, Linkedin, Mail, MapPin, Phone, Send, Code2, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   const socialLinks = [
     {
@@ -41,12 +42,12 @@ function Footer() {
   ];
 
   const quickLinks = [
-    { name: 'Inicio', href: '#hero' },
-    { name: 'Sobre mí', href: '#about' },
-    { name: 'Experiencia', href: '#experience' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Contacto', href: '#contact' }
+    { name: t('nav.home'), href: '#hero' },
+    { name: t('footer.about'), href: '#about' },
+    { name: t('nav.experience'), href: '#experience' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' }
   ];
 
   const contactInfo = [
@@ -62,7 +63,7 @@ function Footer() {
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      text: 'Quito, Ecuador',
+      text: t('footer.location'),
       href: null
     }
   ];
@@ -85,9 +86,7 @@ function Footer() {
               </h3>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
-              Full Stack Developer especializado en arquitecturas de microservicios, 
-              desarrollo web moderno y soluciones en la nube. Apasionado por crear 
-              experiencias digitales innovadoras y escalables.
+              {t('footer.description')}
             </p>
             
             {/* Social Links */}
@@ -112,7 +111,7 @@ function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Enlaces rápidos</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -130,7 +129,7 @@ function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">{t('footer.contact')}</h4>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
                 <li key={index}>
@@ -160,7 +159,7 @@ function Footer() {
               className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <Send className="w-4 h-4" />
-              Enviar mensaje
+              {t('footer.sendMessage')}
             </a>
           </div>
         </div>
@@ -169,13 +168,13 @@ function Footer() {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
-              © {currentYear} Steven Gabriel Erazo Laguna. Todos los derechos reservados.
+              © {currentYear} Steven Gabriel Erazo Laguna. {t('footer.rights')}
             </p>
             
             <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <span>Hecho con</span>
+              <span>{t('footer.madeWith')}</span>
               <Heart className="w-4 h-4 text-red-500 animate-pulse" />
-              <span>usando</span>
+              <span>{t('footer.using')}</span>
               <span className="text-blue-400 font-medium">React + TypeScript</span>
             </div>
           </div>
